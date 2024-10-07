@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sweet Delights - Toko Kue Artisan Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <style>
+      :root {
+        --primary-color: #8b4513;
+        --secondary-color: #d2691e;
+        --background-color: #faebd7;
+        --text-color: #4a4a4a;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: var(--background-color);
+      }
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        position: relative;
+      }
+      header {
+        background-color: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+      }
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+      }
+      .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: var(--primary-color);
+      }
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+      .nav-links li {
+        margin-left: 1.5rem;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text-color);
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+      .nav-links a:hover {
+        color: var(--secondary-color);
+      }
+      .hero {
+        background-color: var(--background-color);
+        padding: 150px 0 100px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -50px;
+        left: -50px;
+        width: 200px;
+        height: 200px;
+        background-color: var(--secondary-color);
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+        opacity: 0.1;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        bottom: -50px;
+        right: -50px;
+        width: 250px;
+        height: 250px;
+        background-color: var(--primary-color);
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        opacity: 0.1;
+      }
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+      }
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .cta-button {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: #fff;
+        padding: 0.8rem 1.5rem;
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+      }
+      .cta-button:hover {
+        background-color: var(--secondary-color);
+      }
+      .section {
+        padding: 5rem 0;
+        position: relative;
+      }
+      .section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        text-align: center;
+        color: var(--primary-color);
+      }
+      .products {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      .product-item {
+        flex-basis: calc(33.333% - 20px);
+        margin-bottom: 2rem;
+        background-color: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+      .product-item:hover {
+        transform: translateY(-5px);
+      }
+      .product-item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+      .product-info {
+        padding: 1rem;
+      }
+      .product-info h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        color: var(--primary-color);
+      }
+      .testimonials {
+        background-color: #fff8dc;
+        padding: 5rem 0;
+        position: relative;
+      }
+      .testimonials::before {
+        content: "";
+        position: absolute;
+        top: -30px;
+        left: 5%;
+        width: 100px;
+        height: 100px;
+        background-color: var(--secondary-color);
+        border-radius: 50% 50% 50% 70% / 50% 50% 70% 60%;
+        opacity: 0.1;
+      }
+      .testimonial-item {
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 10px;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .testimonial-item p {
+        font-style: italic;
+        margin-bottom: 1rem;
+      }
+      .testimonial-author {
+        font-weight: bold;
+        color: var(--primary-color);
+      }
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+      .gallery-item {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .gallery-item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+      .gallery-item:hover img {
+        transform: scale(1.05);
+      }
+      .custom-order {
+        background-color: #fff8dc;
+        padding: 5rem 0;
+        text-align: center;
+      }
+      .custom-order-form {
+        max-width: 500px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .form-group {
+        margin-bottom: 1rem;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+      }
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        width: 50%;
+        padding: 0.5rem;
+        border: 1px solid #000000;
+        border-radius: 5px;
+      }
+      .submit-button {
+        background-color: var(--primary-color);
+        color: #fff;
+        border: none;
+        padding: 0.8rem 1.5rem;
+        border-radius: 25px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .submit-button:hover {
+        background-color: var(--secondary-color);
+      }
+      footer {
+        background-color: var(--primary-color);
+        color: #fff;
+        padding: 3rem 0;
+      }
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      .footer-section {
+        flex-basis: calc(25% - 20px);
+        margin-bottom: 1rem;
+      }
+      .footer-section h3 {
+        margin-bottom: 1rem;
+        color: #ffa07a;
+      }
+      .social-icons a {
+        color: #fff;
+        margin-right: 1rem;
+        font-size: 1.2rem;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+      .social-icons a:hover {
+        color: var(--secondary-color);
+      }
+      .social-media {
+        color: #fff;
+        background-color: none;
+        margin-right: 1rem;
+        font-size: 1.2rem;
+        text-decoration: none;
+      }
+
+      .fa-whatsapp {
+        width: auto;
+        scale: 1.5;
+        background-color: #25d366;
+        color: white;
+      }
+
+      .fa-instagram {
+        width: auto;
+        scale: 1.5;
+        background-image: linear-gradient(to top, #405de6, #5b51d8, #833ab4, #c13584, #e1306c, #fd1d1d, #f56040, #fcaf45, #ffdc80);
+        color: white;
+      }
+
+      .fa-facebook {
+        width: auto;
+        padding-left: 5px;
+        padding-right: 5px;
+        scale: 1.5;
+        color: #405de6;
+      }
+
+      @media (max-width: 768px) {
+        .product-item,
+        .footer-section {
+          flex-basis: 100%;
+        }
+        .gallery {
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="container">
+        <div class="logo">Sweet Delights</div>
+        <ul class="nav-links">
+          <li><a href="#beranda">Beranda</a></li>
+          <li><a href="#tentang">Tentang</a></li>
+          <li><a href="#produk">Produk</a></li>
+          <li><a href="#galeri">Galeri</a></li>
+          <li><a href="#pesanan">Pesanan Kustom</a></li>
+          <li><a href="#kontak">Kontak</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="beranda" class="hero">
+      <div class="container">
+        <h1>Nikmati Kelezatan Kue Artisan</h1>
+        <p>Temukan cita rasa istimewa dalam setiap gigitan kue buatan tangan kami. Dibuat dengan cinta dan bahan-bahan premium pilihan.</p>
+        <a href="#produk" class="cta-button">Jelajahi Menu Kami</a>
+      </div>
+    </section>
+
+    <section id="tentang" class="section">
+      <div class="container">
+        <h2>Tentang Sweet Delights</h2>
+        <p>
+          Sweet Delights adalah toko kue artisan premium yang didedikasikan untuk menciptakan pengalaman kuliner tak terlupakan. Setiap kue kami adalah karya seni yang dibuat dengan hati-hati, menggabungkan resep warisan dengan sentuhan
+          modern. Kami hanya menggunakan bahan-bahan terbaik dan teknik pembuatan yang presisi untuk menghasilkan kue-kue yang tidak hanya memanjakan lidah, tetapi juga mata.
+        </p>
+      </div>
+    </section>
+
+    <section id="produk" class="section">
+      <div class="container">
+        <h2>Produk Unggulan Kami</h2>
+        <div class="products">
+          <div class="product-item">
+            <img src="https://i.pinimg.com/236x/1a/92/52/1a925252b529f96a604d1b72205b61b7.jpg" alt="Chocolate Truffle Cake" />
+            <div class="product-info">
+              <h3>Chocolate Truffle Cake</h3>
+              <p>Kue cokelat mewah dengan lapisan truffle yang lembut.</p>
+            </div>
+          </div>
+          <div class="product-item">
+            <img src="https://i.pinimg.com/236x/36/f0/b7/36f0b7c2cc97b498f4c087483e219881.jpg" alt="Matcha Green Tea Tart" />
+            <div class="product-info">
+              <h3>Matcha Green Tea Tart</h3>
+              <p>Tart dengan filling matcha premium dan crust yang renyah.</p>
+            </div>
+          </div>
+          <div class="product-item">
+            <img src="https://i.pinimg.com/236x/e1/f5/e2/e1f5e2cf48f5379943a18c3e6635f6da.jpg" alt="Red Velvet Cake" />
+            <div class="product-info">
+              <h3>Red Velvet Cake</h3>
+              <p>Kue lembut dengan cream cheese frosting yang lezat.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="galeri" class="section">
+      <div class="container">
+        <h2>Galeri Kreasi Kami</h2>
+        <div class="gallery">
+          <div class="gallery-item">
+            <img src="https://i.pinimg.com/564x/2c/79/68/2c796819c75f3b419367d72e76e03b94.jpg" alt="Wedding Cake" />
+          </div>
+          <div class="gallery-item">
+            <img src="https://i.pinimg.com/236x/15/7c/2e/157c2e7352043ab029ec5969390e0357.jpg" alt="Birthday Cupcakes" />
+          </div>
+          <div class="gallery-item">
+            <img src="https://i.pinimg.com/236x/41/fb/21/41fb21b69b9a650f4e4af8d1272ac1df.jpg" alt="Fruit Tarts" />
+          </div>
+          <div class="gallery-item">
+            <img src="https://i.pinimg.com/236x/e2/89/5b/e2895b68ab5f1dc48224f6b501dc34c1.jpg" alt="Chocolate Bonbons" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <div class="container">
+        <h2>Apa Kata Pelanggan Kami</h2>
+        <div class="testimonial-item">
+          <p>"Kue-kue dari Sweet Delights selalu menjadi bintang di setiap acara keluarga kami. Rasanya luar biasa dan presentasinya sangat memukau!"</p>
+          <span class="testimonial-author">- Anita Wijaya</span>
+        </div>
+        <div class="testimonial-item">
+          <p>"Saya telah mencoba banyak kue di berbagai tempat, tapi Sweet Delights benar-benar istimewa. Setiap gigitan terasa seperti seni kuliner sejati."</p>
+          <span class="testimonial-author">- Daniel Kusuma</span>
+        </div>
+      </div>
+    </section>
+
+    <div id="pesanan" class="section custom-order">
+      <div class="container">
+        <h2>Pesanan Kustom</h2>
+        <form action="#" method="post">
+          <div class="form-group">
+            <label for="nama">Nama</label>
+            <input type="text" id="nama" name="nama" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="telepon">Nomor Telepon</label>
+            <input type="tel" id="telepon" name="telepon" required />
+          </div>
+          <div class="form-group">
+            <label for="jenis-kue">Jenis Kue</label>
+            <select id="jenis-kue" name="jenis-kue" required>
+              <option value="">Pilih jenis kue</option>
+              <option value="birthday">Kue Ulang Tahun</option>
+              <option value="wedding">Kue Pernikahan</option>
+              <option value="custom">Kue Kustom Lainnya</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="pesan">Pesan Khusus</label>
+            <textarea id="pesan" name="pesan" rows="4"></textarea>
+          </div>
+          <button type="submit" class="submit-button">Kirim Pesanan</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="kontak" class="section contact">
+      <div class="container">
+        <h2>Hubungi Kami</h2>
+        <p>Jl. Ketintang No. 1234666, Surabaya</p>
+        <p>Telepon: (021) 1234-5678</p>
+        <p>Email: info@sweetdelights.com</p>
+        <div class="social-media">
+          <a href="#" aria-label="Instagram" class="fa fa-instagram"></a>
+          <a href="#" aria-label="Facebook" class="fa fa-facebook"></a>
+          <a href="#" aria-label="whatsapp" class="fa fa-whatsapp"></a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <p>&copy;2024 Sweet Delights. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
